@@ -1,69 +1,81 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Proyecto 1</title>
-    <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="css/framework7/framework7.material.min.css">
+    <link rel="stylesheet" type="text/css" href="css/framework7/framework7.material.colors.min.css">
+    <link rel="stylesheet" type="text/css" href="css/framework7/framework7-icons.css">
+    <link rel="stylesheet" type="text/css" href="css/framework7/kitchen-sink.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
   </head>
+
   <body>
     <div class="statusbar-overlay"></div>
     <div class="panel-overlay"></div>
-    <div class="panel panel-left panel-reveal">
+    <div class="panel panel-left panel-cover">
       <div class="content-block">
+        <p>Proyecto 1</p>
+        <p><a href="views/profile.html" class="close-panel">Perfil</a></p>
+        <p><a href="views/notification.html" class="close-panel">Notificaciones</a></p>
       </div>
     </div>
     <div class="views">
       <div class="view view-main">
         <div class="pages navbar-through toolbar-through">
-          <div data-page="index" class="page no-navbar">
+          <div data-page="index" class="page">
             <div class="page-content">
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class = "login-screen modal-in">
-         <div class = "view">
-            <div class = "page">
-              <div class="page-content login-screen-content">
-                <div class="login-screen-title">Iniciar Sesión</div>
-                <form id="login-form" class="store-data">
-                  <div class="list-block inputs-list">
-                    <ul>
-                      <li class="item-content">
-                        <div class="item-inner">
-                          <div class="item-title label">Usuario</div>
-                          <div class="item-input item-input-field">
-                            <input type="text" name="nombre" placeholder="Ingrese su usuario">
-                          </div>
-                        </div>
-                      </li>
-                      <li class="item-content">
-                        <div class="item-inner">
-                          <div class="item-title label">Contraseña</div>
-                          <div class="item-input item-input-field">
-                            <input type="password" name="contrasenia" placeholder="Ingrese su contraseña">
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="content-block"><a href="#" class="button">Entrar</a></div>
-                  <div class="content-block"><a href="#" class="button">Registrarse</a></div>
-                  <div class="content-block">
-                    <div class="list-block-label">Some text about login information.<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                  </div>
-                </form>
+    <!--Login modal-->
+    <div class="login-screen modal-in">
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content">
+            <div class="login-screen-title">Iniciar Sesión</div>
+            <form id="login-form" class="store-data">
+              <div class="list-block inputs-list">
+                <ul>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Usuario</div>
+                      <div class="item-input item-input-field">
+                        <input type="text" name="nombre" placeholder="Ingrese su usuario">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Contraseña</div>
+                      <div class="item-input item-input-field">
+                        <input type="password" name="contrasenia" placeholder="Ingrese su contraseña">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
-            </div>
-         </div>
+              <div class="content-block"><a href="#" class="button" onclick="beforeLogin(1)">Entrar</a></div>
+              <div class="content-block"><a href="#" class="button" onclick="beforeLogin(2)">Registrarse</a></div>
+              <div class="content-block"><a href="#" class="button" onclick="beforeLogin(3)">Recuperar Contraseña</a></div>
+              <div class="content-block">
+                <div class="list-block-label">Some text about login information.<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
+    </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/framework7.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
   </body>
+
 </html>

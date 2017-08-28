@@ -1,4 +1,10 @@
 <div data-page="register" class="page no-navbar page-on-center">
+  <div class="toolbar toolbar-bottom">
+    <div class="toolbar-inner">
+        <a href="#" class="link" onclick="backLogin()">Volver</a>
+        <a href="#" class="link">Guardar</a>
+    </div>
+  </div>
   <div class="page-content login-screen-content">
     <div class="login-screen-title">Registrarse</div>
     <form id="register-form" class="list-block inputs-list store-data">
@@ -53,6 +59,16 @@
               <div class="item-title label">Contraseña</div>
               <div class="item-input item-input-field">
                 <input type="password" name="contrasenia" placeholder="Ingrese su contraseña">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content">
+            <div class="item-inner">
+              <div class="item-title label">Repetir Contraseña</div>
+              <div class="item-input item-input-field">
+                <input type="password" placeholder="Ingrese su contraseña nuevamente">
               </div>
             </div>
           </div>

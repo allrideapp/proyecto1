@@ -1,7 +1,30 @@
-/*media list (item-media)*/
-.item-media img {
-    width: auto;
-    height: auto;
-    max-width: 40px;
-    border-radius: 50%;
+/* estilos de login-screen-content*/
+.title{
+  max-width: 480px;
+  margin: 24px auto;
+}
+/*eliminar padding content-block-title (list-block)*/
+.subtitle{
+  padding-top: 0px;
+}
+/*subnavbar media-list*/
+#subnavbar-media-list{
+  background: #2196f3;
+  position: absolute;
+  height: 111px;
+  z-index: 20;
+  top: 56px;
+}
+/*eliminar border (buy)*/
+#pay-form ul:before, #group-form ul:before{
+  background-color: transparent;
+}
+/*Invertir posicion de checkbox,radio*/
+.list-block.reverse .label-checkbox{
+  flex-direction: row-reverse;
+  padding-left: 0px;
+}
+.list-block.reverse .item-media+.item-inner{
+  margin-left: 0px;
+  padding-left: 16px;
 }
