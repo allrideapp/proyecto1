@@ -28,3 +28,7 @@
   margin-left: 0px;
   padding-left: 16px;
 }
+/*cambio en el top de la clase pull-to-refresh-layer */
+.pull-to-refresh-layer {
+  top: 10px;
+}

@@ -1,18 +1,10 @@
-// Initialize app
-var myApp = new Framework7({
-  init: false,
-  material: true
-});
-
-// If we need to use custom DOM library, let's save it to $$ variable:
+var myApp = new Framework7({init: false,material: true});
 var $$ = Dom7;
-
-// Add view
 var mainView = myApp.addView('.view-main', {
-  // Because we want to use dynamic navbar, we need to enable it for this view:
   dynamicNavbar: false,
   animateNavBackIcon: true
 });
+
 localStorage.setItem('login', '0');
 
 $$(document).on('pageInit', function (e) {
@@ -22,49 +14,62 @@ $$(document).on('pageInit', function (e) {
     $$('.login-screen').css('display','none');
     mainView.loadPage('views/home.html');
   }
-  /*Graficos*/
-  if(page.name == "test"){
-    var ctx = document.getElementById("myChart").getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    }
-                }]
-            }
-        }
+  if(page.name == 'home'){
+    /*pull to refresh*/
+    var ptrContent = $$('.pull-to-refresh-content');
+    ptrContent.on('ptr:refresh', function (e) {
+      setTimeout(function () {
+        var txt = '<li>';
+            txt+= '<a href="#" class="item-link item-content">';
+            txt+= '<div class="item-media"><img src="http://lorempixel.com/160/160/people/3" width="80"></div>';
+            txt+= '<div class="item-inner">';
+            txt+= '<div class="item-title-row">';
+            txt+= '<div class="item-title">Billie Jean</div>';
+            txt+= '<div class="item-after">$16</div>';
+            txt+= '</div>';
+            txt+= '<div class="item-subtitle">Michael Jackson</div>';
+            txt+= '<div class="item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus.Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.</div>';
+            txt+= '</div>';
+            txt+= '</a>';
+            txt+= '</li>';
+          ptrContent.find('ul').prepend(txt);
+        myApp.pullToRefreshDone();
+      }, 2000);
+    });
+    /*swipe to delete*/
+    $$('.mark').on('click', function () {
+      myApp.alert('Mark');
+    });
+    $$('.reply').on('click', function () {
+      myApp.alert('Reply');
+    });
+    $$('.forward').on('click', function () {
+      myApp.alert('Forward');
     });
   }
+  if(page.name == 'buy'){
+      var categorias = ['Agua','Luz','Gas'];
+      var autocompleteCategoria= myApp.autocomplete({
+        input: '#categoria',
+        openIn: 'dropdown',
+        dropdownPlaceholderText: 'Por ejemplo: "Agua"',
+        source: function (autocomplete, query, render) {
+            var results = [];
+            if (query.length === 0) {
+                render(results);
+                return;
+            }
+            for (var i = 0; i < categorias.length; i++) {
+                if (categorias[i].toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+                  results.push(categorias[i]);
+                }
+            }
+            render(results);
+        }
+      });
+  }
 })
+
 function beforeLogin(view){
   $$('.login-screen').css('display','none');
   switch (view) {
